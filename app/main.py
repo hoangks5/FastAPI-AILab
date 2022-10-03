@@ -27,6 +27,7 @@ async def ThresholdAD_upload_file(in_file: UploadFile=File(...), upper_index: fl
     """
     ThresholdAD compares each time series value with given thresholds.
     In the following example, we detect time points when Price is above 50000 USD or below 10000 USD.
+    
     """
     data_upload = in_file.file.read()
     data_upload =  pd.read_csv(io.StringIO(data_upload.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
