@@ -88,13 +88,13 @@ async def QuantileAD_upload_file(in_file: UploadFile=File(...), high_value: floa
     return response.json()
     
 @app.post("/QuantileAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
-async def QuantileAD_ipfs_hash(input_source_hash : str = Form("QmcF4nzdSzhtxxLa7i3yQ1F3MrU7riasDsRExk6AhCTRx7"), upper_index: float = Form(0.99), below_index: float = Form(0.01)):
+async def QuantileAD_ipfs_hash(input_source_hash : str = Form("QmcF4nzdSzhtxxLa7i3yQ1F3MrU7riasDsRExk6AhCTRx7"), high_value: float = Form(0.99), low_value: float = Form(0.01)):
     data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
     data_text =  pd.read_csv(io.StringIO(data_text.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_text)
     
     # method QuantileAD
-    quantile_ad = QuantileAD(high=upper_index, low=below_index)
+    quantile_ad = QuantileAD(high=high_value, low=low_value)
     anomalies = quantile_ad.fit_detect(s)
     plot(s, anomaly=anomalies, ts_linewidth=1, ts_markersize=3, anomaly_markersize=5, anomaly_color='red', anomaly_tag="marker")
     
