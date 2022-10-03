@@ -23,7 +23,7 @@ app = FastAPI(
 
 
 @app.post("/ThresholdAD/upload_file",tags=["Abnormal Detection Data Time Series"])
-async def ThresholdAD_upload_file(in_file: UploadFile=File(...), upper_index: float = Form(50000), below_index: float = Form(10000)):
+async def ThresholdAD_upload_file(in_file: UploadFile=File(...), high_value: float = Form(50000), low_value: float = Form(10000)):
     """
     ThresholdAD compares each time series value with given thresholds.
     In the following example, we detect time points when Price is above 50000 USD or below 10000 USD.
@@ -34,7 +34,7 @@ async def ThresholdAD_upload_file(in_file: UploadFile=File(...), upper_index: fl
     s = validate_series(data_upload)
     
     # method thresholdAD
-    threshold_ad = ThresholdAD(high=upper_index, low=below_index)
+    threshold_ad = ThresholdAD(high=high_value, low=low_value)
     anomalies = threshold_ad.detect(s)
     plot(s, anomaly=anomalies, ts_linewidth=1, ts_markersize=3, anomaly_markersize=5, anomaly_color='red', anomaly_tag="marker")
     
