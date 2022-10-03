@@ -48,7 +48,7 @@ async def ThresholdAD_upload_file(in_file: UploadFile=File(...), high_value: flo
     return response.json()
 
 @app.post("/ThresholdAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
-async def ThresholdAD_ipfs_hash(input_source_hash : str = Form(), high_value: float = Form(0.99), low_value: float = Form(0.01)):
+async def ThresholdAD_ipfs_hash(input_source_hash : str = Form(), high_value: float = Form(50000), low_value: float = Form(10000)):
     data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
     data_text =  pd.read_csv(io.StringIO(data_text.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_text)
