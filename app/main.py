@@ -18,7 +18,7 @@ app = FastAPI(
     version="1.0",
     docs_url='/docs',
     openapi_url='/openapi.json', # This line solved my issue, in my case it was a lambda function
-    redoc_url=None
+    redoc_url='/redoc'
 )
 
 
