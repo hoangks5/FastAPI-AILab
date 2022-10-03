@@ -68,13 +68,13 @@ async def ThresholdAD_ipfs_hash(input_source_hash : str = Form(), high_value: fl
     
     
 @app.post("/QuantileAD/upload_file",tags=["Abnormal Detection Data Time Series"])
-async def QuantileAD_upload_file(in_file: UploadFile=File(...), upper_index: float = Form(), below_index: float = Form()):
+async def QuantileAD_upload_file(in_file: UploadFile=File(...), high_value: float = Form(0.99), low_value: float = Form(0.01)):
     data_upload = in_file.file.read()
     data_upload =  pd.read_csv(io.StringIO(data_upload.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_upload)
     # method QuantileAD
     
-    quantile_ad = QuantileAD(high=upper_index, low=below_index)
+    quantile_ad = QuantileAD(high=high_value, low=low_value)
     anomalies = quantile_ad.fit_detect(s)
     plot(s, anomaly=anomalies, ts_linewidth=1, ts_markersize=3, anomaly_markersize=5, anomaly_color='red', anomaly_tag="marker")
     
