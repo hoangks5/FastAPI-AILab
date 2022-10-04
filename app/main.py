@@ -13,8 +13,8 @@ from fastapi import FastAPI, File, UploadFile, APIRouter
 import secrets 
 
 app = FastAPI(
-    title="API hoangks5",
-    description="Description of my app.",
+    title="API for AP Market",
+    description="",
     version="1.0",
     docs_url='/docs',
     openapi_url='/openapi.json', # This line solved my issue, in my case it was a lambda function
