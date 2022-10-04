@@ -1,2 +1,2 @@
 from underthesea import text_normalize
-print(text_normalize('Ừ Thế mày đã nuôi được bố mẹ mày Bữa nào chưa thay Xưa nay vẫn báo hải cơm cha mẹ máy mấy hôm thấy ông đơ mà không thèm nói mày lại làm già'))
+print(text_normalize('Dạ không trẻ bên em có 2 loại hình loại hình doanh nghiệp dưới 100 người và trên 100 người thôi'))
