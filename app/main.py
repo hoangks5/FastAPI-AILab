@@ -191,7 +191,7 @@ async def speech_to_text_ipfs_hash(input_source_hash : str = Form('QmNTpXRvXVLiY
     import speech_recognition as sr
     r = sr.Recognizer()
     import soundfile
-    data, samplerate = soundfile.read(da)
+    data, samplerate = soundfile.read(data_text)
     soundfile.write('hn_studentbook10.wav', data, samplerate, subtype='PCM_16')
     harvard = sr.AudioFile('hn_studentbook10.wav')
     with harvard as source:
