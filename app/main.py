@@ -155,7 +155,7 @@ This detector is usually preferred to QuantileAD in the case where only a tiny p
 
 
 @app.post("/InterQuartileRangeAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
-async def InterQuartileRangeAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(0.5,description="""c (float, or 2-tuple (float, float), optional) – Factor used to determine the bound of normal range (betweeen Q1-c*IQR and Q3+c*IQR). If a tuple (c1, c2), the factors are for lower and upper bound respectively.
+async def InterQuartileRangeAD_ipfs_hash(input_source_hash : str = Form('QmcF4nzdSzhtxxLa7i3yQ1F3MrU7riasDsRExk6AhCTRx7'), c: float = Form(0.5,description="""c (float, or 2-tuple (float, float), optional) – Factor used to determine the bound of normal range (betweeen Q1-c*IQR and Q3+c*IQR). If a tuple (c1, c2), the factors are for lower and upper bound respectively.
                                                                                           
     Default: 3.0.""")):
     """
