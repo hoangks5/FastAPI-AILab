@@ -219,7 +219,16 @@ In the following example, it fails to capture meaningful drops of price in a lon
     return response.json()
 
 @app.post("/PersistAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
-async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(),side: str = Form()):
+async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(3.0,description="""c (float, optional) – Factor used to determine the bound of normal range based on historical interquartile range.
+                                                                               
+    Default: 3.0."""), side: str = Form('both',description="""If “both”, to detect anomalous positive and negative changes;
+
+If “positive”, to only detect anomalous positive changes;
+
+If “negative”, to only detect anomalous negative changes.
+
+
+    Default: “both”.""")):
     """
     PersistAD compares each time series value with its previous values. Internally, it is implemented as a pipenet with transformer DoubleRollingAggregate.
 
