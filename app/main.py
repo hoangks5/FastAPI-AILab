@@ -189,7 +189,8 @@ If “positive”, to only detect anomalous positive changes;
 
 If “negative”, to only detect anomalous negative changes.
 
-Default: “both”.""")):
+
+            Default: “both”.""")):
     """
     PersistAD compares each time series value with its previous values. Internally, it is implemented as a pipenet with transformer DoubleRollingAggregate.
 
