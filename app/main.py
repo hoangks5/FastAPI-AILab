@@ -154,7 +154,7 @@ This detector is usually preferred to QuantileAD in the case where only a tiny p
 
 @app.post("/InterQuartileRangeAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
 async def InterQuartileRangeAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form()):
-     """
+    """
     InterQuartileRangeAD is another widely used detector based on simple historical statistics is based on interquartile range (IQR). When a value is out of the range defined by [𝑄1−𝑐×𝐼𝑄𝑅, 𝑄3+𝑐×𝐼𝑄𝑅] where 𝐼𝑄𝑅=𝑄3−𝑄1 is the difference between 25% and 75% quantiles.
 
 This detector is usually preferred to QuantileAD in the case where only a tiny portion or even none of training data is anomalous.
