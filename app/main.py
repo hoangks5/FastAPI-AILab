@@ -51,7 +51,7 @@ async def ThresholdAD_upload_file(in_file: UploadFile=File(description="Upload f
     return response.json()
 
 @app.post("/ThresholdAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
-async def ThresholdAD_ipfs_hash(input_source_hash : str = Form(''), high_value: float = Form(50000), low_value: float = Form(10000)):
+async def ThresholdAD_ipfs_hash(input_source_hash : str = Form('QmcF4nzdSzhtxxLa7i3yQ1F3MrU7riasDsRExk6AhCTRx7'), high_value: float = Form(50000), low_value: float = Form(10000)):
     """
     ThresholdAD compares each time series value with given thresholds.
     In the following example, we detect time points when Price is above 50000 USD or below 10000 USD.
