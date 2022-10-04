@@ -13,7 +13,7 @@ from fastapi import FastAPI, File, UploadFile, APIRouter
 import secrets 
 
 app = FastAPI(
-    title="API for AP Market",
+    title="API for AI Market",
     description="",
     version="1.0",
     docs_url='/docs',
