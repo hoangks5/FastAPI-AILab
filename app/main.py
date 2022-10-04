@@ -185,6 +185,17 @@ async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(
     os.remove(input_source_hash+'.png')
     return response.json()
 
-
-
+@app.post("/speech_to_text/ipfs_hash",tags=["Speech To Text"])
+async def speech_to_text_ipfs_hash(input_source_hash : str = Form(), c: float = Form(),side: str = Form()):
+    import speech_recognition as sr
+    r = sr.Recognizer()
+    import soundfile
+    data, samplerate = soundfile.read('hn_studentbook10.mp3')
+    soundfile.write('hn_studentbook10.wav', data, samplerate, subtype='PCM_16')
+    harvard = sr.AudioFile('hn_studentbook10.wav')
+    with harvard as source:
+        audio = r.record(source)
+        
+    text = r.recognize_google(audio,language="vi-VI")
+    print(text)
 
