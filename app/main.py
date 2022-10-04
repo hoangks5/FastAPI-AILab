@@ -202,7 +202,7 @@ async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
     text = r.recognize_google(audio,language="vi-VI")
     return {'data':text}
 
-@app.post("/pdf_to_text/upload", tags=['PDF To Text'])
+@app.post("/pdf_to_text/upload_file", tags=['PDF To Text'])
 async def pdf_to_text(in_file: UploadFile = File(description='Upload file PDF')):
     pdfFile = in_file.file
     pdfReader = PyPDF2.PdfFileReader(pdfFile)
