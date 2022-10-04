@@ -220,6 +220,15 @@ In the following example, it fails to capture meaningful drops of price in a lon
 
 @app.post("/PersistAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
 async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(),side: str = Form()):
+    """
+    PersistAD compares each time series value with its previous values. Internally, it is implemented as a pipenet with transformer DoubleRollingAggregate.
+
+In the following example, we detect anomalous positive changes of price.
+
+By default, PersistAD only check one previous value, which is good at capturing additive anomaly in short-term scale, but not in long-term scale because it is too near-sighted.
+
+In the following example, it fails to capture meaningful drops of price in a longer time scale.
+"""
     data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
     data_text =  pd.read_csv(io.StringIO(data_text.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_text)
