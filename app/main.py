@@ -76,7 +76,7 @@ async def ThresholdAD_ipfs_hash(input_source_hash : str = Form('QmcF4nzdSzhtxxLa
     
     
 @app.post("/QuantileAD/upload_file",tags=["Abnormal Detection Data Time Series"])
-async def QuantileAD_upload_file(in_file: UploadFile=File(...), high_value: float = Form(0.99), low_value: float = Form(0.01)):
+async def QuantileAD_upload_file(in_file: UploadFile=File(description='Upload file .csv'), high_value: float = Form(0.99), low_value: float = Form(0.01)):
     """
     QuantileAD compares each time series value with historical quantiles.
 
