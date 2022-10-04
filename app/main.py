@@ -185,8 +185,8 @@ async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(
     os.remove(input_source_hash+'.png')
     return response.json()
 
-@app.post("/speech_to_text/ipfs_hash",tags=["Speech To Text"])
-async def speech_to_text_ipfs_hash(input_source_hash : str = Form('QmNTpXRvXVLiY38DsY9Wa8isfsbchM1pfMrgTJQftv9VXC')):
+@app.post("/speech_to_text/upload_file",tags=["Speech To Text"])
+async def speech_to_text_upload_file(input_source_hash : str = Form('QmNTpXRvXVLiY38DsY9Wa8isfsbchM1pfMrgTJQftv9VXC')):
     data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
     print(type(data_text))
     import speech_recognition as sr
