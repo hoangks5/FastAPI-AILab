@@ -127,7 +127,7 @@ In the following example, we detect time points when Price is above 99% percenti
     return response.json()
 
 @app.post("/InterQuartileRangeAD/upload_file",tags=["Abnormal Detection Data Time Series"])
-async def InterQuartileRangeAD_upload_file(in_file: UploadFile=File(...), c: float = Form(0.5)):
+async def InterQuartileRangeAD_upload_file(in_file: UploadFile=File(...), c: float = Form(0.5,description='c (float, or 2-tuple (float, float), optional) – Factor used to determine the bound of normal range (betweeen Q1-c*IQR and Q3+c*IQR). If a tuple (c1, c2), the factors are for lower and upper bound respectively. Default: 3.0.')):
     """
     InterQuartileRangeAD is another widely used detector based on simple historical statistics is based on interquartile range (IQR). When a value is out of the range defined by [𝑄1−𝑐×𝐼𝑄𝑅, 𝑄3+𝑐×𝐼𝑄𝑅] where 𝐼𝑄𝑅=𝑄3−𝑄1 is the difference between 25% and 75% quantiles.
 
