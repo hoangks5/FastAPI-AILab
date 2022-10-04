@@ -77,6 +77,12 @@ async def ThresholdAD_ipfs_hash(input_source_hash : str = Form('QmcF4nzdSzhtxxLa
     
 @app.post("/QuantileAD/upload_file",tags=["Abnormal Detection Data Time Series"])
 async def QuantileAD_upload_file(in_file: UploadFile=File(...), high_value: float = Form(0.99), low_value: float = Form(0.01)):
+    """
+    QuantileAD compares each time series value with historical quantiles.
+
+In the following example, we detect time points when Price is above 99% percentile or below 1% percentile.
+    
+    """
     data_upload = in_file.file.read()
     data_upload =  pd.read_csv(io.StringIO(data_upload.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_upload)
