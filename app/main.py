@@ -186,6 +186,10 @@ async def PersistAD_upload_file(in_file: UploadFile=File(...), c: float = Form()
     PersistAD compares each time series value with its previous values. Internally, it is implemented as a pipenet with transformer DoubleRollingAggregate.
 
 In the following example, we detect anomalous positive changes of price.
+
+By default, PersistAD only check one previous value, which is good at capturing additive anomaly in short-term scale, but not in long-term scale because it is too near-sighted.
+
+In the following example, it fails to capture meaningful drops of price in a longer time scale.
 """
     data_upload = in_file.file.read()
     data_upload =  pd.read_csv(io.StringIO(data_upload.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
