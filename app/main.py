@@ -129,7 +129,8 @@ In the following example, we detect time points when Price is above 99% percenti
 @app.post("/InterQuartileRangeAD/upload_file",tags=["Abnormal Detection Data Time Series"])
 async def InterQuartileRangeAD_upload_file(in_file: UploadFile=File(...), c: float = Form()):
     """
-    InterQuartileRangeAD is another widely used detector based on simple historical statistics is based on interquartile range (IQR). When a value is out of the range defined by [𝑄1−𝑐×𝐼𝑄𝑅, 𝑄3+𝑐×𝐼𝑄𝑅] where 𝐼𝑄𝑅=𝑄3−𝑄1 is the difference between 25% and 75% quantiles. This detector is usually preferred to QuantileAD in the case where only a tiny portion or even none of training data is anomalous.
+    InterQuartileRangeAD is another widely used detector based on simple historical statistics is based on interquartile range (IQR). When a value is out of the range defined by [𝑄1−𝑐×𝐼𝑄𝑅, 𝑄3+𝑐×𝐼𝑄𝑅] where 𝐼𝑄𝑅=𝑄3−𝑄1 is the difference between 25% and 75% quantiles. 
+This detector is usually preferred to QuantileAD in the case where only a tiny portion or even none of training data is anomalous.
     """
     data_upload = in_file.file.read()
     data_upload =  pd.read_csv(io.StringIO(data_upload.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
