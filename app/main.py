@@ -182,6 +182,11 @@ This detector is usually preferred to QuantileAD in the case where only a tiny p
 
 @app.post("/PersistAD/upload_file",tags=["Abnormal Detection Data Time Series"])
 async def PersistAD_upload_file(in_file: UploadFile=File(...), c: float = Form(), side: str = Form()):
+    """
+    PersistAD compares each time series value with its previous values. Internally, it is implemented as a pipenet with transformer DoubleRollingAggregate.
+
+In the following example, we detect anomalous positive changes of price.
+"""
     data_upload = in_file.file.read()
     data_upload =  pd.read_csv(io.StringIO(data_upload.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_upload)
