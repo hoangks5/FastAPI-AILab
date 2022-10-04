@@ -262,7 +262,8 @@ async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
     r = sr.Recognizer()
     import soundfile
     data, samplerate = soundfile.read(data_text)
-    soundfile.write('hn_studentbook10.wav', data, samplerate, subtype='PCM_16')
+    name_file = secrets.token_hex(nbytes=16)+'.wav'
+    soundfile.write(name_file, data, samplerate, subtype='PCM_16')
     harvard = sr.AudioFile('hn_studentbook10.wav')
     with harvard as source:
         audio = r.record(source)
