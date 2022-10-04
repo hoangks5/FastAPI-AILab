@@ -196,6 +196,6 @@ async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
     harvard = sr.AudioFile('hn_studentbook10.wav')
     with harvard as source:
         audio = r.record(source)
-        
     text = r.recognize_google(audio,language="vi-VI")
+    return text
 
