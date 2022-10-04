@@ -103,6 +103,12 @@ In the following example, we detect time points when Price is above 99% percenti
     
 @app.post("/QuantileAD/ipfs_hash",tags=["Abnormal Detection Data Time Series"])
 async def QuantileAD_ipfs_hash(input_source_hash : str = Form("QmcF4nzdSzhtxxLa7i3yQ1F3MrU7riasDsRExk6AhCTRx7"), high_value: float = Form(0.99), low_value: float = Form(0.01)):
+    """
+    QuantileAD compares each time series value with historical quantiles.
+
+In the following example, we detect time points when Price is above 99% percentile or below 1% percentile.
+    
+    """
     data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
     data_text =  pd.read_csv(io.StringIO(data_text.decode('utf-8')),index_col="Date", parse_dates=True, squeeze=True)
     s = validate_series(data_text)
