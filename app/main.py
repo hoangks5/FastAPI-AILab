@@ -187,8 +187,7 @@ async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(
 
 @app.post("/speech_to_text/upload_file",tags=["Speech To Text"])
 async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
-    data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
-    print(type(data_text))
+    data_text = in_file.file()
     import speech_recognition as sr
     r = sr.Recognizer()
     import soundfile
