@@ -268,6 +268,7 @@ async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
     with harvard as source:
         audio = r.record(source)
     text = r.recognize_google(audio,language="vi-VI")
+    os.remove(name_file)
     return {'data':text}
 
 @app.post("/pdf_to_text/upload_file", tags=['PDF To Text'])
