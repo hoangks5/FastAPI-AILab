@@ -188,11 +188,10 @@ async def PersistAD_ipfs_hash(input_source_hash : str = Form(), c: float = Form(
 @app.post("/speech_to_text/ipfs_hash",tags=["Speech To Text"])
 async def speech_to_text_ipfs_hash(input_source_hash : str = Form('QmNTpXRvXVLiY38DsY9Wa8isfsbchM1pfMrgTJQftv9VXC')):
     data_text = requests.get('https://gateway.ipfs.airight.io/ipfs/'+input_source_hash).content
-    print(data_text)
-    ''' import speech_recognition as sr
+    import speech_recognition as sr
     r = sr.Recognizer()
     import soundfile
-    data, samplerate = soundfile.read('hn_studentbook10.mp3')
+    data, samplerate = soundfile.read(da)
     soundfile.write('hn_studentbook10.wav', data, samplerate, subtype='PCM_16')
     harvard = sr.AudioFile('hn_studentbook10.wav')
     with harvard as source:
@@ -201,4 +200,3 @@ async def speech_to_text_ipfs_hash(input_source_hash : str = Form('QmNTpXRvXVLiY
     text = r.recognize_google(audio,language="vi-VI")
     print(text)
 
- '''
