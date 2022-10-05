@@ -1,28 +1,19 @@
 <View>
-    <Header value="Select predictable region spans in time series:"/>
-    <TimeSeriesLabels name="predictable" toName="stock">
-        <Label value="Regions" background="red" />
+    <TimeSeriesLabels name="label" toName="ts">
+        <Label value="Change" background="red" />
     </TimeSeriesLabels>
-
-    <!-- Use the TimeSeries object tag to display time series data -->
-    <TimeSeries name="stock" valueType="url" value="https://storage.googleapis.com/orailabelstudio/prod/project_515/BTC_USD%20Bitfinex%20Historical%20Data.csv"
+    
+    <TimeSeries name="ts" valueType="csv" value="https://storage.googleapis.com/orailabelstudio/prod/project_517/AAPL%20Historical%20Data.csv?time=Data&values=Price&sep=%2C&tf=%25m-%25d-%25Y"
                 sep=","
                 timeColumn="Date"
-                timeFormat="%m/%d/%Y"
-                timeDisplayFormat="%m/%d/%Y"
+                timeFormat="%m-%d-%Y"
+                timeDisplayFormat="%m-%d-%Y"
                 overviewChannels="Price">
-<!--Use the Channel tag to specify the name and format of the time series channel-->
+
         <Channel column="Price"
+                 units="miles/h"
                  displayFormat=",.1f"
                  strokeColor="#1f77b4"
-                 legend="Stock Value"/>
+                 legend="Velocity"/>       
     </TimeSeries>
-    <Header value="Forecast next trend:"/>
-    <!--Use the Choices control tag to prompt annotators to choose
-    the trend for the time series graph-->
-    <Choices name="trend_forecast" toName="stock">
-        <Choice value="Up"/>
-        <Choice value="Down"/>
-        <Choice value="Steady"/>
-    </Choices>
 </View>
