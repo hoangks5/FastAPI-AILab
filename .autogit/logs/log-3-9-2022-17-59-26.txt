@@ -3,7 +3,7 @@
         <Label value="Change" background="red" />
     </TimeSeriesLabels>
     
-    <TimeSeries name="ts" valueType="csv" value="https://storage.googleapis.com/orailabelstudio/prod/project_517/AAPL%20Historical%20Data.csv?time=Data&values=Price&sep=%2C&tf=%25m-%25d-%25Y"
+    <TimeSeries name="ts" valueType="url" value="https://storage.googleapis.com/orailabelstudio/prod/project_517/AAPL%20Historical%20Data.csv?time=Data&values=Price&sep=%2C&tf=%25m-%25d-%25Y"
                 sep=","
                 timeColumn="Date"
                 timeFormat="%m-%d-%Y"
