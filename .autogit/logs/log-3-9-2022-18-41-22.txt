@@ -4,12 +4,30 @@ Mon Oct 03 2022 18:41:22 GMT+0700 (Indochina Time)
 
 Modified files:
 
-
-Created files:
-* .autogit/logs/log-3-9-2022-18-41-2.txt
-
-
-Deleted files:
-
-
-Renamed files:
+<View>
+  <Header value="Select predictable region spans in time series:"/>
+  <TimeSeriesLabels name="predictable" toName="stock">
+    <Label value="Regions" background="red" />
+  </TimeSeriesLabels>
+  <!-- Use the TimeSeries object tag to display time series data -->
+<TimeSeries name="stock" valueType="url" value="$csv"
+                sep=","
+                timeColumn="Date"
+                timeFormat="%m/%d/%Y"
+                timeDisplayFormat="%m/%d/%Y"
+                overviewChannels="Price">
+    <!--Use the Channel tag to specify the name and format of the time series channel-->
+<Channel column="Price"
+                 displayFormat=",.1f"
+                 strokeColor="#1f77b4"
+                 legend="Stock Value"/>
+        </TimeSeries>
+    <Header value="Forecast next trend:"/>
+<!--Use the Choices control tag to prompt annotators to choose
+    the trend for the time series graph-->
+        <Choices name="trend_forecast" toName="stock">
+      <Choice value="Up"/>
+      <Choice value="Down"/>
+      <Choice value="Steady"/>
+    </Choices>
+  </View>
