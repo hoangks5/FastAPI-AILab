@@ -1,18 +1,18 @@
 import secrets
-from fastapi import FastAPI, Form
 import os
 import requests
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Form
 import PyPDF2
 from urllib.request import Request, urlopen
 from PyPDF2 import PdfFileWriter, PdfFileReader
 import io
+from typing import Union
 
 app = FastAPI()
 
 
 @app.post("/pdf_to_text/upload", tags=['PDF To Text'])
-async def pdf_to_text(in_file: UploadFile = File(description='Upload file PDF')):
+async def pdf_to_text(in_file: UploadFile = File(description='Upload file PDF', default='None')):
     pdfFile = in_file.file
     pdfReader = PyPDF2.PdfFileReader(pdfFile)
     pageObj = ""
