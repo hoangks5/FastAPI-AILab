@@ -260,15 +260,10 @@ async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
     data_text = in_file.file
     import speech_recognition as sr
     r = sr.Recognizer()
-    import soundfile
-    data, samplerate = soundfile.read(data_text)
-    name_file = secrets.token_hex(nbytes=16)+'.wav'
-    soundfile.write(name_file, data, samplerate, subtype='PCM_16')
-    harvard = sr.AudioFile(name_file)
+    harvard = sr.AudioFile(data_text)
     with harvard as source:
         audio = r.record(source)
     text = r.recognize_google(audio,language="vi-VI")
-    os.remove(name_file)
     return {'data':text}
 
 @app.post("/pdf_to_text/upload_file", tags=['PDF To Text'])
