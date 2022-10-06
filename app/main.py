@@ -256,7 +256,7 @@ In the following example, it fails to capture meaningful drops of price in a lon
     return response.json()
 
 @app.post("/speech_to_text/upload_file",tags=["Speech To Text"])
-async def speech_to_text_upload_file(in_file: UploadFile = File(...) ):
+async def speech_to_text_upload_file(in_file: UploadFile = File(description='Upload file .wav (PCM 16 bit)') ):
     data_text = in_file.file
     import speech_recognition as sr
     r = sr.Recognizer()
