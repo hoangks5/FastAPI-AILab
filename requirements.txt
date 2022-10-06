@@ -4,3 +4,4 @@ pydantic>=1.8.0,<2.0.0
 uvicorn==0.18.3
 requests==2.28.1
 PyPDF2==2.11.0
+pdfminer2
