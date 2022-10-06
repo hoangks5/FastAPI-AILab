@@ -19,9 +19,9 @@ app = FastAPI(
     title="API for AI Market",
     description="",
     version="1.0",
-    docs_url='hoangks5/docs',
+    docs_url='/hoangks5/docs',
     openapi_url='/openapi.json', # This line solved my issue, in my case it was a lambda function
-    redoc_url='hoangks5/redoc'
+    redoc_url='/hoangks5/redoc'
 )
 
 
