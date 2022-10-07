@@ -41,7 +41,6 @@ async def pdf_to_text_upload(in_file: UploadFile = File(description='Upload file
     for page in PDFPage.get_pages(fp, pagenos, maxpages=maxpages, password=password,caching=caching, check_extractable=True):
         interpreter.process_page(page)
     text = retstr.getvalue()
-    fileNamePdf = secrets.token_hex(16)+'.pdf'
     outputStream = open(fileNamePdf, "wb")
     writer.write(fileNamePdf)
     outputStream.close()
