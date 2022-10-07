@@ -16,7 +16,7 @@ app = FastAPI()
 
 
 @app.post("/pdf_to_text/upload", tags=['PDF To Text'])
-async def pdf_to_text1(in_file: UploadFile = File(description='Upload file PDF', default='None')):
+async def pdf_to_text_upload(in_file: UploadFile = File(description='Upload file PDF', default='None')):
     pdfFile = in_file.file
     writer = PdfFileWriter()
     pdfReader = PyPDF2.PdfFileReader(pdfFile)
@@ -58,7 +58,7 @@ async def pdf_to_text1(in_file: UploadFile = File(description='Upload file PDF',
 
 
 @app.post("/pdf_to_text/ipfs_hash", tags=['PDF To Text'])
-async def pdf_to_text(input_source_hash: str = Form(description='ipfs hash')):
+async def pdf_to_textd_ipfs_hash(input_source_hash: str = Form(description='ipfs hash')):
     url = "https://gateway.ipfs.airight.io/ipfs/"+input_source_hash
     writer = PdfFileWriter()
     remoteFile = urlopen(Request(url)).read()
