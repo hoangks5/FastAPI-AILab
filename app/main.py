@@ -14,6 +14,7 @@ import secrets
 import PyPDF2
 from urllib.request import Request, urlopen
 from PyPDF2 import PdfFileWriter, PdfFileReader
+from tree import assert_same_structure
 
 app = FastAPI(
     title="API for AI Market",
@@ -23,7 +24,9 @@ app = FastAPI(
     openapi_url='/openapi.json', # This line solved my issue, in my case it was a lambda function
     redoc_url='/ailab/redoc'
 )
-
+@app.get("/")
+async def main():
+    return 
 
 @app.post("/ThresholdAD/upload_file",tags=["Abnormal Detection Data Time Series"])
 async def ThresholdAD_upload_file(in_file: UploadFile=File(description="Upload file .csv"), high_value: float = Form(50000), low_value: float = Form(10000)):
