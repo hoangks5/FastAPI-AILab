@@ -26,7 +26,7 @@ app = FastAPI(
 )
 @app.get("/")
 async def main():
-    return 
+    return 'Hi, I am AIlab'
 
 @app.post("/ThresholdAD/upload_file",tags=["Abnormal Detection Data Time Series"])
 async def ThresholdAD_upload_file(in_file: UploadFile=File(description="Upload file .csv"), high_value: float = Form(50000), low_value: float = Form(10000)):
