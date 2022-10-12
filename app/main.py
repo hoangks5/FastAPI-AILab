@@ -14,7 +14,6 @@ import secrets
 import PyPDF2
 from urllib.request import Request, urlopen
 from PyPDF2 import PdfFileWriter, PdfFileReader
-from tree import assert_same_structure
 
 app = FastAPI(
     title="API for AI Market",
