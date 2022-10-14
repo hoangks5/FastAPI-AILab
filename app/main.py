@@ -311,4 +311,4 @@ async def pdf_to_text(input_source_hash: str = Form(description='ipfs hash')):
     response = requests.post(url, files=files)
     os.remove(fileName)
     os.remove(fileNamePdf)
-    return response.json()
+    return response.json() 
