@@ -91,7 +91,7 @@ In the following example, we detect time points when Price is above 99% percenti
     anomalies = quantile_ad.fit_detect(s)
     plot(s, anomaly=anomalies, ts_linewidth=1, ts_markersize=3, anomaly_markersize=5, anomaly_color='red', anomaly_tag="marker")
     
-    # import ipfs
+    # import ipfs 
     name_file = secrets.token_hex(nbytes=16)+'.png'
     plt.savefig(name_file) 
     url = 'http://128.199.70.52:5001/api/v0/add'
